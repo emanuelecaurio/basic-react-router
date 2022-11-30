@@ -1,70 +1,121 @@
-# Getting Started with Create React App
+# basic-react-router
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Why
 
-## Available Scripts
+Currently, [React Router library](https://reactrouter.com/en/main) has become very complex.
 
-In the project directory, you can run:
+I thought to get my hands dirty, so I could learn more and also to share this package with anyone who needs a super lightweight and efficient basic router.
 
-### `npm start`
+This package might be for you if you just need a basic routing for your React app.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Note that this package should work very similar to [React Router - basic section](https://v5.reactrouter.com/web/example/basic).
+## Props
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+|Name|Type|Default|Description|
+|:--|:--:|:-----:|:----------|
+|**availableRoutes**|<code>Array</code>|required|Array that must contains this kind of objects, example: {route: '/', component: JSX_COMPONENT}|
+|**notFound**|<code>any</code>|`<div>Not Found.</div>`|This component can be overwritten by your own.|
+## Usage
 
-### `npm test`
+The simplest way to use this Router is to just import
+and define the 'availableRoutes' props.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```js
+import BasicReactRouter from 'basic-react-router'
 
-### `npm run build`
+// Pages
+import HomePage from './HomePage'
+import PageX from './PageX'
+import PageY from './PageY'
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+function App() {
+    const availableRoutes = [
+        {route: '/', component: <HomePage/>},
+        {route: '/pagex', component: <PageX/>},
+        {route: '/pagey', component: <PageY/>}
+    ]
+    return (
+        <BasicReactRouter
+            availableRoutes={availableRoutes}
+        />
+    );
+}
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+You can also pass a custom Not Found page:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```js
+import BasicReactRouter from 'basic-react-router'
 
-### `npm run eject`
+// ... all previous pages
+import NotFound from './NotFound'
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+function App() {
+    const availableRoutes = [
+        {route: '/', component: <HomePage/>},
+        {route: '/pagex', component: <PageX/>},
+        {route: '/pagey', component: <PageY/>}
+    ]
+    return (
+        <BasicReactRouter
+            availableRoutes={availableRoutes}
+            notFound={NotFound}
+        />
+    );
+}
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+You can navigate into pages using the Link component. 
+```js
+import {Link} from 'basic-react-router'
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+function HomePage() {
+    return (
+        <div>
+            HomePage
+            <Link to={'/pagex'}>Link!</Link>
+        </div>
+    );
+}
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Or going back through history using Back component.
 
-## Learn More
+You can also wrap Back or Link component into buttons
+```js
+import {Back} from 'basic-react-router'
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+function PageX() {
+    return (
+        <div>
+            PageX
+            <Back>Back</Back>
+        </div>
+    );
+}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+You don't need to import and use them though. 
 
-### Code Splitting
+Link and Back are very simple components, you can eventually make your own.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Here's how they are made:
+```js
+export const Link = ({to, children, ...props}) => <a href={to} {...props}>{children}</a>
 
-### Analyzing the Bundle Size
+export const Back = ({children, ...props}) => <a {...props} onClick={(e) => {
+e.preventDefault()
+window.history.back()
+}}>{children}</a>
+```
+Of course, you can check out the GitHub project for more.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contributing
+Contributions of any kind are welcome.
 
-### Making a Progressive Web App
+## License
+MIT
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Personal Blog
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+this is my [Instagram personal blog](https://www.instagram.com/minudaje/) where I share software related content and music 
