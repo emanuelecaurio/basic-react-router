@@ -22,7 +22,9 @@
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
     "build": "tsc",
-    "preversion": "npm run build"
+    "preversion": "npm run build",
+    "postversion": "git push --follow-tags"
+
   },
   "peerDependencies": {
     "react": ">= 16.8"
