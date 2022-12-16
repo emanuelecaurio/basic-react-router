@@ -1,4 +1,5 @@
 # basic-react-router
+<img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/basic-react-router?color=g">
 
 ## Why
 
@@ -9,6 +10,17 @@ I thought to get my hands dirty, so I could learn more and also to share this pa
 This package might be for you if you just need a basic routing for your React app.
 
 Note that this package should work very similar to [React Router - basic section](https://v5.reactrouter.com/web/example/basic).
+
+## Getting Started
+
+You can install the module via `npm` or `yarn`:
+```sh
+npm install basic-react-router
+```
+
+```sh
+yarn add basic-react-router
+```
 ## Props
 
 |Name|Type|Default|Description|
