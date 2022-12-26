@@ -1,6 +1,8 @@
 # basic-react-router
 <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/basic-react-router?color=g">
 
+**works with**: `React >= 16.8` or higher
+
 ## Why
 
 Currently, [React Router library](https://reactrouter.com/en/main) has become very complex.
