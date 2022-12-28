@@ -1,7 +1,7 @@
 # basic-react-router
 <img alt="npm bundle size" src="https://img.shields.io/bundlephobia/min/basic-react-router?color=g">
 
-**works with**: `React >= 16.8` or higher
+**works with**: `React >= 16.8`
 
 ## Why
 
