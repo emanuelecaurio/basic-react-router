@@ -1,6 +1,6 @@
 {
   "name": "basic-react-router",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "description": "basic react router",
   "main": "dist/index.js",
   "files": [
