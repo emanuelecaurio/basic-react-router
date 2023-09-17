@@ -129,7 +129,3 @@ Contributions of any kind are welcome.
 
 ## License
 MIT
-
-## Personal Blog
-
-this is my [Instagram personal blog](https://www.instagram.com/minudaje/) where I share software related content and music 
